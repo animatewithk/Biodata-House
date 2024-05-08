@@ -81,8 +81,8 @@
 		}
 
 		.navbar a:hover {
-			background-color: #ddd;
-			color: black;
+			background-color: blue;
+			color: white;
 		}
 		#home{
 			padding-left: 70px;
@@ -112,54 +112,64 @@
 			</div>
 	 </div>
 	</div>
-	 <hr width="300px" color="gold">
-		<h1>Biography</h1>
+	<hr width="300px" color="gold">
+	<h1>Biography</h1>
 
 	<script>
-		// Handles the click event for the dropdown button
-		document.querySelector('.dropdown-btn').addEventListener('click', toggleDropdown);
+  let svalue = ""
+  // Handles the click event for the dropdown button
+  document.querySelector('.dropdown-btn').addEventListener('click', toggleDropdown);
 
-		// Handles the change event for the checkboxes
-		document.querySelectorAll('.dropdown-content input[type=checkbox]').forEach(addCheckboxListener);
+  // Handles the keyup event for the search input
+  document.getElementById('searchInput').addEventListener('keyup', filterOptions);
 
-		// Handles the keyup event for the search input
-		document.getElementById('searchInput').addEventListener('keyup', filterOptions);
+  function toggleDropdown() {
+   document.querySelector('.dropdown-content').style.display = 'block';
+  }
 
-		function toggleDropdown() {
-			document.querySelector('.dropdown-content').style.display = 'block';
+  function filterOptions() {
+   let input = document.getElementById('searchInput');
+   let filter = input.value.toUpperCase();
+   let options = document.getElementById('optionsList');
+   let li = options.getElementsByTagName('li');
+
+   for (let i = 0; i < li.length; i++) {
+    let checkbox = li[i].getElementsByTagName('input')[0];
+    let txtValue = checkbox.value;
+
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+     li[i].style.display = '';
+    } else {
+     li[i].style.display = 'none';
+    }
+   }
+  }
+
+  // Function to handle checkbox selection and update dropdown button text
+  function handleCheckboxChange(checkbox) {
+   // Uncheck all other checkboxes
+   let optionsList = document.getElementById('optionsList');
+   let checkboxes = optionsList.querySelectorAll('input[type="checkbox"]');
+   for (let checkbox of checkboxes) {
+    checkbox.checked = false;
+   }
+
+   // Check the clicked checkbox
+   checkbox.checked = true;
+
+			svalue = checkbox.value
+   document.querySelector('.dropdown-btn').innerHTML = svalue;
+			document.querySelector('.dropdown-content').style.display = 'none';
+  }
+
+  // Add event listener to each checkbox for selection handling
+  let checkboxes = document.querySelectorAll('#optionsList input[type="checkbox"]');
+  for (let checkbox of checkboxes) {
+   checkbox.addEventListener('change', function() {
+    handleCheckboxChange(this);
+   });
 		}
-
-		function addCheckboxListener(checkbox) {
-			checkbox.addEventListener('change', function() {
-				if (this.checked) {
-					// Deselect all other checkboxes
-					document.querySelectorAll('.dropdown-content input[type=checkbox]').forEach(function(otherCheckbox) {
-						if (otherCheckbox!== this) {
-							otherCheckbox.checked = false;
-					 }
-				 });
-					document.querySelector('.dropdown-content').style.display = 'none';
-			 }
-			});
-		}
-
-		function filterOptions() {
-			let input = document.getElementById('searchInput');
-			let filter = input.value.toUpperCase();
-			let options = document.getElementById('optionsList');
-			let li = options.getElementsByTagName('li');
-
-			for (let i = 0; i < li.length; i++) {
-				let a = li[i].getElementsByTagName('input')[0];
-				let txtValue = a.value;
-
-				if (txtValue.toUpperCase().indexOf(filter) > -1) {
-					li[i].style.display = '';
-				} else {
-					li[i].style.display = 'none';
-				}
-			}
-		}
+		
 	</script>
 </body>
 </html>
