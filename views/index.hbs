@@ -1,164 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Dropdown Checkbox</title>
-		<style>
-				body{
-					 background-color: black;
-					 color: white;
-				}
-			 .dropdown {
-						position: relative;
-		    display: inline-block;
-				}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dropdown Checkbox</title>
+	<style>
+		body{
+			background-color: black;
+			color: white;
+		}
+		
+		.dropdown {
+			position: relative;
+		 display: inline-block;
+		}
 
-				.dropdown-btn {
-						background-color: transparent;
-						color: white;
-						padding: 0px;
-						border: none;
-						cursor: pointer;
-				}
+		.dropdown-btn {
+			background-color: transparent;
+		 color: white;
+			padding: 0px;
+			border: none;
+			cursor: pointer;
+		}
 
-				.dropdown-content {
-						display: none;
-						position: absolute;
-						background-color: white;
-						min-width: 160px;
-						box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-						z-index: 1;
-					 left: auto;
-					 right: 5px;
-					 border-radius: 10px;
-					 color: black;
-				}
+		.dropdown-content {
+			display: none;
+		 position: absolute;
+			background-color: white;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+			left: auto;
+			right: 5px;
+			border-radius: 10px;
+			color: black;
+		}
 
-				.dropdown-content input[type=text] {
-						width: 100%;
-						padding: 10px;
-						font-size: 16px;
-						border: none;
-						border-bottom: 1px solid #ddd;
-				}
+		.dropdown-content input[type=text] {
+			width: 100%;
+			padding: 10px;
+			font-size: 16px;
+			border: none;
+			border-bottom: 1px solid #ddd;
+		}
 
-				.dropdown-content ul {
-						list-style: none;
-						padding: 0;
-						margin: 0;
-				}
+		.dropdown-content ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
 
-				.dropdown-content li {
-						padding: 0px;
-						border-bottom: 1px solid #ddd;
-						cursor: pointer;
-				}
+		.dropdown-content li {
+			padding: 0px;
+			border-bottom: 1px solid #ddd;
+			cursor: pointer;
+		}
 
-				.dropdown-content li:last-child {
-						border-bottom: none;
-				}
+		.dropdown-content li:last-child {
+			border-bottom: none;
+		}
 
-				.dropdown-content li:hover {
-						background-color: #ddd;
-				}
+		.dropdown-content li:hover {
+			background-color: #ddd;
+		}
 
-				/* Added the following CSS code for the navbar */
-				.navbar {
-						display: flex;
-						justify-content: left;
-						background-color: blue;
-						padding: 10px;
-					 border-radius: 10px;
-				}
+		/* Added the following CSS code for the navbar */
+		.navbar {
+			display: flex;
+			justify-content: left;
+			background-color: blue;
+			padding: 10px;
+			border-radius: 10px;
+		}
 
-				.navbar a {
-						color: white;
-						text-decoration: none;
-						padding-right: 40px;
-						display: inline-block;
-				}
+		.navbar a {
+			color: white;
+			text-decoration: none;
+			padding-right: 40px;
+			display: inline-block;
+		}
 
-				.navbar a:hover {
-						background-color: #ddd;
-						color: black;
-				}
-			 #home{
-				  padding-left: 70px;
-			 }
-			 #searchInput{
-					 width: 140px;
-					 border-radius: 10px;
-				}
-		</style>
+		.navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+		#home{
+			padding-left: 70px;
+		}
+		#searchInput{
+			width: 140px;
+			border-radius: 10px;
+		}
+	</style>
 </head>
 <body>
-		<div class="navbar">
-				<a href="/">Biography</a>
-				<a href="/les">Lesson</a>
-			<div id="home">
-				<div class="dropdown">
-						<button class="dropdown-btn">Search</button>
-						<div class="dropdown-content">
-								<input type="text" id="searchInput" placeholder="Search.." onkeyup="filterOptions()">
-								<ul id="optionsList">
-										<li><input type="checkbox" id="option1" value="Albert Einstein">Albert Einstein</li>
-										<li><input type="checkbox" id="option2" value="Isaac Newton">Isaac Newton</li>
-										<li><input type="checkbox" id="option3" value="Elon Musk">Elon Musk</li>
-								<!-- Add more options here -->
-								</ul>
-						</div>
+	<div class="navbar">
+	 <a href="/">Biography</a>
+		<a href="/les">Lesson</a>
+	 <div id="home">
+			<div class="dropdown">
+				<button class="dropdown-btn">Search</button>
+				<div class="dropdown-content">
+					<input type="text" id="searchInput" placeholder="Search.." onkeyup="filterOptions()">
+					<ul id="optionsList">
+						<li><input type="checkbox" id="option1" value="Albert Einstein">Albert Einstein</li>
+						<li><input type="checkbox" id="option2" value="Isaac Newton">Isaac Newton</li>
+						<li><input type="checkbox" id="option3" value="Elon Musk">Elon Musk</li>
+						<!-- Add more options here -->
+					</ul>
 				</div>
 			</div>
-		</div>
+	 </div>
+	</div>
 	 <hr width="300px" color="gold">
 		<h1>Biography</h1>
 
-		<script>
-				// Handles the click event for the dropdown button
-				document.querySelector('.dropdown-btn').addEventListener('click', toggleDropdown);
+	<script>
+		// Handles the click event for the dropdown button
+		document.querySelector('.dropdown-btn').addEventListener('click', toggleDropdown);
 
-				// Handles the change event for the checkboxes
-				document.querySelectorAll('.dropdown-content input[type=checkbox]').forEach(addCheckboxListener);
+		// Handles the change event for the checkboxes
+		document.querySelectorAll('.dropdown-content input[type=checkbox]').forEach(addCheckboxListener);
 
-				// Handles the keyup event for the search input
-				document.getElementById('searchInput').addEventListener('keyup', filterOptions);
+		// Handles the keyup event for the search input
+		document.getElementById('searchInput').addEventListener('keyup', filterOptions);
 
-				function toggleDropdown() {
-						document.querySelector('.dropdown-content').style.display = 'block';
+		function toggleDropdown() {
+			document.querySelector('.dropdown-content').style.display = 'block';
+		}
+
+		function addCheckboxListener(checkbox) {
+			checkbox.addEventListener('change', function() {
+				if (this.checked) {
+					// Deselect all other checkboxes
+					document.querySelectorAll('.dropdown-content input[type=checkbox]').forEach(function(otherCheckbox) {
+						if (otherCheckbox!== this) {
+							otherCheckbox.checked = false;
+					 }
+				 });
+					document.querySelector('.dropdown-content').style.display = 'none';
+			 }
+			});
+		}
+
+		function filterOptions() {
+			let input = document.getElementById('searchInput');
+			let filter = input.value.toUpperCase();
+			let options = document.getElementById('optionsList');
+			let li = options.getElementsByTagName('li');
+
+			for (let i = 0; i < li.length; i++) {
+				let a = li[i].getElementsByTagName('input')[0];
+				let txtValue = a.value;
+
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					li[i].style.display = '';
+				} else {
+					li[i].style.display = 'none';
 				}
-
-				function addCheckboxListener(checkbox) {
-						checkbox.addEventListener('change', function() {
-								if (this.checked) {
-										// Deselect all other checkboxes
-										document.querySelectorAll('.dropdown-content input[type=checkbox]').forEach(function(otherCheckbox) {
-												if (otherCheckbox!== this) {
-														otherCheckbox.checked = false;
-												}
-										});
-										document.querySelector('.dropdown-content').style.display = 'none';
-								}
-						});
-				}
-
-				function filterOptions() {
-						let input = document.getElementById('searchInput');
-						let filter = input.value.toUpperCase();
-						let options = document.getElementById('optionsList');
-						let li = options.getElementsByTagName('li');
-
-						for (let i = 0; i < li.length; i++) {
-								let a = li[i].getElementsByTagName('input')[0];
-								let txtValue = a.value;
-
-								if (txtValue.toUpperCase().indexOf(filter) > -1) {
-										li[i].style.display = '';
-								} else {
-										li[i].style.display = 'none';
-								}
-						}
-				}
-		</script>
+			}
+		}
+	</script>
 </body>
 </html>
